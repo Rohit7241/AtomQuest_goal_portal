@@ -29,7 +29,6 @@ const approveGoal= asyncHandler(async(req,res)=>{
     const manager_id=req.user._id
     const goal=await Goal.findById(goal_id)
     .populate("employee_id")
-
     if(!goal){
         throw new ApiError(404,"Goal not found")
     }
@@ -50,7 +49,6 @@ const approveGoal= asyncHandler(async(req,res)=>{
         new ApiResponse(200,goal,"goal approved and locked")
     )
 })
-
 const returnGoal=asyncHandler(async(req,res)=>{
     const goal_id=req.params.id
     const manager_id=req.user._id
